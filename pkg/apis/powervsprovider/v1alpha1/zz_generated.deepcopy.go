@@ -22,7 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1 "k8s.io/api/core/v1"
+	"k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -163,6 +163,11 @@ func (in *PowerVSResourceReference) DeepCopyInto(out *PowerVSResourceReference) 
 	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
+	if in.RegEx != nil {
+		in, out := &in.RegEx, &out.RegEx
 		*out = new(string)
 		**out = **in
 	}
